@@ -1,0 +1,486 @@
+<html>
+<head>
+  <title>Admin</title>
+</head>
+<body>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+
+
+  <title>{{path}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="static/css/style12.css">
+
+
+<script src="static/amcharts/amcharts.js"></script>
+<script src="static/amcharts/serialsss.js"></script>
+<script src="static/amcharts/export.min.js"></script>
+<link rel="stylesheet" href="static/amcharts/new.css" type="text/css" media="all" />
+<script src="static/amcharts/light.js"></script>
+<link rel="stylesheet" href="static/css/completecss.css">
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+   <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+    
+    <style >
+      
+      .logout{
+  background-color: #4CAF50;
+  border: none;
+    color: white;
+    padding: 15px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 4px 2px;
+    
+      }
+
+
+      .w3-myfont {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+
+#deleteicon {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+#deleteicon:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+#hover {
+    display: none;
+}
+
+#image:hover + #hover {
+    display: block;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  
+
+<div class="topnav">
+  <div class="active">
+    
+    <img src="static/img/stock1.png" width="80" height="60">
+  </div>
+
+ 
+  <a style="text-align: center; background: green; margin-left: 500px;" >Admin Panel</a>
+  
+  <a href="logout" style="float: right;">logout</a>
+</div>
+
+      
+
+
+   
+  </nav> 
+
+  
+<div  class="container-fluid text-center">    
+ 
+    <div style="padding-top:5px; margin-top: 0px; border-top: solid; border-color: red" class="col-sm-2 sidenav" style="background: #000000 " >
+       
+
+       <div id = "profile"  > 
+      
+ {% for item in users %}
+    <tr >
+    <div  >
+      <div  id="userphoto" style="float: left;"> <img src="static/images/{{item[3]}}" height="55" width="55" style="border-radius: 50% ">    </div>
+      <div style="border-bottom: solid; border-color: red" id = "username" style="float: right;" > <p><font color="white" size="4px">{{item[2]}}</font></p>
+      <p><font color="white" size="1px">{{item[4]}}</font></p>  </div>
+      
+      
+
+      </p>
+    </div>
+   
+  </tr >
+  {% endfor %}
+
+    </div > 
+
+
+<div style="margin-top:50px"> 
+
+<div  style="margin-top: 10px; border-style: solid; border-color: #ffffff; color: white; font-size: 20px" id="clicktoview"  title="Click to do View All companies"
+ return false;">View All </div>
+<div  style="margin-top: 10px; border-style: solid; border-color: #ffffff; color: white; font-size: 20px" id="clicktoadd"  title="Click to do Add New Companies"
+ return false;">Add New </div>
+
+
+
+
+
+
+
+</div>
+
+
+      
+
+   </div>
+
+   
+   <div class="col-sm-8 sidenav" id="display" style="float: left; background: #FFFFFF" > 
+
+
+
+<div id = "addnew" style="display: none; "> 
+  <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+   <input type="text" placeholder="Enter Company Name" style="float: left;" name="name" value="{{request.form.name }}"> <br> <br>
+  <input type="text" placeholder="Type" style="float: left;" name="type" value="{{request.form.type }}"> <br> <br>
+          <div style="float: left;"> Upload CSV File </div> <br>
+    <input type="file" name="file"> <br>
+          <div style="float: left;"> Upload Image  </div> <br>
+    <input type=file name=image accept = "image/*">
+    <input type="submit" onclick="showanimation()" value = "Train Data" > 
+
+  </form>
+
+ 
+</div>
+
+
+<div class = "w3-myfont" id="analyze" style="display: none; margin-top: 120px; background: #00000000 "> Please Take Patient. We are Analyzing your Data. Go and Have a cup of Coffee !
+
+    
+<div id="loader-wrapper" >
+    
+
+    <div id="loader" > </div>
+
+   
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="masonry-item col-md-6" style="margin-left: 200px; margin-top: 20px; width: 100%">
+                <!-- #Sales Report ==================== -->
+                <div class="bd bgc-white">
+                  <div class="layers">
+                    <div class="layer w-100 p-20">
+                      <h6 class="lh-1"></h6>
+                    </div>
+                    <div class="layer w-100">
+                      <div class="bgc-light-blue-500 c-white p-20">
+                        <div class="peers ai-c jc-sb gap-40">
+                          <div class="peer peer-greed">
+                            
+                           
+                          </div>
+                          <div class="peer">
+                            <h3 class="text-right">{{curent_date}}</h3>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <div class="table-responsive p-20">
+
+
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th class=" bdwT-0">Company</th>
+                              <th class=" bdwT-0">Status</th>
+                              <th class=" bdwT-0">From</th>
+                              <th class=" bdwT-0">To</th>
+                              <th class=" bdwT-0"></th>
+
+                              
+
+                            </tr>
+                          </thead>
+                          {% set count=0 %}
+                          <tbody>
+                              
+                              {% for item in companies %}
+
+                              
+
+                                {% set count = count + loop.index0 %}
+                                <div> 
+                            <tr   id="show{{item[0]}}" >
+                              <td class="fw-600">{{item[3]}} </td>
+                              <td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill">{{item[4]}}</span> </td>
+                              <td>{{startdate[count]}}</td>
+
+                              <td><span class="text-success">{{enddate[count]}}</span></td>
+
+
+
+                              <td id="xxx{{item[0]}}" style="float: right; cursor: pointer;  margin-top: 0px;" onClick="lamo('show{{item[0]}}', '{{item[0]}}')" ><img id="deleteicon" src="static/img/deleteicon.png" data-toggle="tooltip" title="Delete"  height="30" width="30"> </td>
+
+ 
+
+
+                            </tr>
+                          </div>
+                            
+                            
+                              {% endfor %}
+                            </div>
+                            
+
+                          </tbody>
+                        </table>
+
+
+
+
+                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+   </div>
+     
+    
+   
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div>
+
+
+
+
+
+
+  <footer class="container-fluid text-center">
+<div class="footer-black"><p class="text-center">  Copyrights © 2017 Stock Market Prediction | All rights reserved  <br>
+Site Developed By : BCT THIRD YEAR.</p></div>
+</footer>
+</div>
+
+
+
+
+
+</body>
+</html>
+
+
+
+ <script> 
+function show(x) {
+  
+
+  var y = "#".concat(x);
+
+
+ $(y).slideToggle("slow")
+}
+
+
+
+
+
+
+ 
+function showanimation() {
+ $("#addnew").hide("slow") 
+ $("#infodiv").hide("slow") 
+  $("#analyze").show("slow")
+
+ 
+ 
+  
+}
+
+
+function onHover(x){
+var z = "#".concat(x);
+$(z).show()  
+
+
+}
+function onout(x){
+var z = "#".concat(x);
+$(z).hide()  
+
+
+}
+
+
+
+var something = document.getElementById('clicktoadd');
+
+something.style.cursor = 'pointer';
+something.onclick = function() {
+  $('#view').hide("slow")  
+ $('#addnew').show("slow")  
+
+};
+
+var something = document.getElementById('clicktoview');
+
+something.style.cursor = 'pointer';
+something.onclick = function() {
+ $('#view').show("slow")
+ $('#addnew').hide("slow")  
+};
+
+
+
+var something = document.getElementById('clicktotest');
+
+something.style.cursor = 'pointer';
+something.onclick = function() {
+ $('#test').show("slow")
+ $('#addnew').hide("slow")  
+};
+ 
+
+
+
+
+
+
+  $(function() {
+    $('a#calculate').bind('click', function() {
+      window.alert(5);
+      $.getJSON($SCRIPT_ROOT + '/deletecompany', {
+       
+      }, function(data) {
+        $("#result").text(data.result);
+      });
+      return false;
+    });
+  });
+
+
+
+  // $(function() {
+  //   $('a#xxxx').bind('click', function() {
+  //     window.alert(5);
+  //     $.getJSON($SCRIPT_ROOT + '/deletecompany', {
+       
+  //     }, function(data) {
+  //       $("#result").text(data.result);
+  //     });
+  //     return false;
+  //   });
+  // });
+
+function lamo(a, x){
+  
+  var z = "#".concat(a);
+  // window.alert(z)
+  $(z).hide("slow")  
+  // window.alert(x)
+  $.getJSON($SCRIPT_ROOT + '/deletecompany', {
+       a: x
+      }, function(data) {
+        // $("#result").text(data.result);
+      });
+      return false;
+
+}
+ </script>
+

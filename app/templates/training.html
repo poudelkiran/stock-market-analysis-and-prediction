@@ -1,0 +1,159 @@
+<html>
+<head>
+	<title>Admin</title>
+</head>
+<body>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+
+
+
+  <title>{{path}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="static/css/style12.css">
+
+
+<script src="static/amcharts/amcharts.js"></script>
+<script src="static/amcharts/serialsss.js"></script>
+<script src="static/amcharts/export.min.js"></script>
+<link rel="stylesheet" href="static/amcharts/new.css" type="text/css" media="all" />
+<script src="static/amcharts/light.js"></script>
+<link rel="stylesheet" href="static/css/completecss.css">
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+   <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+    
+    
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  
+
+<div class="topnav">
+  <div class="active">
+    
+    <img src="static/img/stock1.png" width="80" height="60">
+  </div>
+
+ 
+  <a style="text-align: center; background: green; margin-left: 500px;" >Admin Panel</a>
+  
+  <a href="logout" style="float: right;">logout</a>
+</div>
+
+      
+
+
+   
+  </nav> 
+
+  
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+   </div>
+     
+    
+   
+  </div>
+</div>
+
+
+<div class="trainig" >
+	<h1 style="text-align: center; color: green">  Data Trained sucessfully <p style="color: red">"{{variable}}"</p></h1>
+</div>
+
+
+
+<div style="" class="sucess" >
+
+    <div style="float: left" class="img">
+    <img  src="static/img/sucess.jpg" width="800" >
+</div>
+<div class="table2" style="margin-left: 700px ">
+ 
+<table>
+	 <tr>
+    <td>ID</td>
+    <td>Date</td>
+    <td>Close price (AC)</td>
+     <td>Close price (PDT)</td>
+  </tr>
+   {% for item in individualdata %}
+  <tr>
+    <th>{{item[0]}}</th>
+    <th>{{item[1]}}</th>
+    <th>{{item[2]}}</th>
+    <th>{{item[6]}}</th>
+  </tr>
+    {% endfor %}
+ 
+  
+</table>
+</div>
+</div>
+
+<div>
+
+
+
+
+
+
+  <footer class="container-fluid text-center">
+<div class="footer-black"><p class="text-center">  Copyrights © 2017 Stock Market Prediction | All rights reserved  <br>
+Site Developed By : BCT THIRD YEAR.</p></div>
+</footer>
+</div>
+
+
+
+
+
+</body>
+</html>
+
+

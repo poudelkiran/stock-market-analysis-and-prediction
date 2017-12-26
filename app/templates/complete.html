@@ -1,0 +1,63 @@
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Training Data</title>
+	<link rel="stylesheet" href="static/css/completecss.css">
+
+
+
+
+
+
+
+<div id="train"> 
+
+<p> Uploaded Panel</p>
+
+		
+		{{file}} File Uploaded Successfully.
+		
+
+<a href="training{{file}}"><button onclick="show()">Train {{file}} Data</button></a> 
+
+
+</div>
+<button onclick="show()">Train {{file}} Data</button>
+
+
+
+
+<div id="x" style="display: none"  >
+
+
+    
+<div id="loader-wrapper">
+   	
+
+   	
+
+    <div id="loader"> </div>
+
+
+
+   
+</div>
+</div>
+
+
+
+
+
+ <script> 
+function show() {
+  
+ document.getElementById('x').style.display = "block";
+document.getElementById('train').style.display = "none";
+
+  
+}
+
+
+ </script>

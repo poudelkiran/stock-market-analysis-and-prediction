@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Stock Analysis</title>
+		<link rel="stylesheet" href="static/amcharts/style.css"	type="text/css">
+
+		<script src="static/amcharts/amcharts.js" type="text/javascript"></script>
+		<script src="static/amcharts/serial.js" type="text/javascript"></script>
+		<script src="static/amcharts/amstock.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="static/css/style12.css">
+
+<script>
+
+		function myFunction(b, e, number){
+			//c = b[1];
+
+			var chartData = []
+			for (i = 0; i <=number; i++) {
+    		//document.writeln(i);
+    		a = JSON.parse(b[i]);
+    		chartData[i]= a;
+			}
+
+
+			AmCharts.makeChart("chartdiv", 
+
+			{
+
+
+
+
+				type: "stock",
+				dataSets: [{
+
+					title: "Nepal Life Insurance",
+
+					fieldMappings: [{
+						fromField: "ltp",
+						toField: "ltp"
+				
+					}],
+					dataProvider: chartData[0],
+					categoryField: "date"
+				},
+
+				{
+					title: "Sanima Bank",
+					compared:true,
+					fieldMappings: [{
+						fromField: "ltp",
+						toField: "ltp"
+					
+					}],
+					dataProvider: chartData[1],
+					categoryField: "date"
+				},
+
+				{
+					title: "Arun Valley Hydropower",
+					fieldMappings: [{
+						fromField: "ltp",
+						toField: "ltp"
+					
+					}],
+					dataProvider: chartData[2],
+					categoryField: "date"
+				},
+
+
+
+				{
+					title: "Everest Bank Limited",
+					fieldMappings: [{
+						fromField: "ltp",
+						toField: "ltp"
+					
+					}],
+					dataProvider: chartData[3],
+					categoryField: "date"
+				},
+
+{
+					title: "Chilime Hydropower",
+					fieldMappings: [{
+						fromField: "ltp",
+						toField: "ltp"
+					
+					}],
+					dataProvider: chartData[4],
+					categoryField: "date"
+				},
+				{
+					title: "Prime Life Insurance",
+					fieldMappings: [{
+						fromField: "ltp",
+						toField: "ltp"
+				
+					}],
+					dataProvider: chartData[5],
+					categoryField: "date"
+				},
+
+
+
+
+				],
+
+				panels: [{
+
+					showCategoryAxis: false,
+					title: "ltp",
+					//percentHeight: 70,
+
+					stockGraphs: [{
+						id: "g1",
+
+						valueField: "ltp",
+						comparable: true,
+						compareField: "ltp",
+						bullet: "round",
+						bulletBorderColor: "#FFFFFF",
+						bulletBorderAlpha: 1,
+						balloonText: "[[title]]:<b>[[value]]</b>",
+						compareGraphBalloonText: "[[title]]:<b>[[value]]</b>",
+						compareGraphBullet: "round",
+						compareGraphBulletBorderColor: "#FFFFFF",
+						compareGraphBulletBorderAlpha: 1
+					}],
+
+					stockLegend: {
+						periodValueTextComparing: "[[percents.value]]",
+						periodValueTextRegular: "[[value]]"		
+					}
+				},
+
+				{
+					title: "",
+					percentHeight: 30,
+					stockGraphs: [{
+						valueField: "maximum",
+						type: "column",
+						showBalloon: false,
+						fillAlphas: 1
+					}],
+
+
+					stockLegend: {
+						periodValueTextRegular: "[[value]]"
+					}
+				}],
+
+				chartScrollbarSettings: {
+					graph: "g1",
+					updateOnReleaseOnly:false
+				},
+
+				chartCursorSettings: {
+					valueBalloonsEnabled: true,
+					valueLineEnabled:true,
+					valueLineBalloonEnabled:true
+				},
+
+				periodSelector: {
+					position: "left",
+					periods: [{
+						period: "DD",
+						count: 10,
+						label: "10 days"
+					}, {
+						period: "MM",
+						selected: true,
+						count: 1,
+						label: "1 month"
+					}, {
+						period: "YYYY",
+						count: 1,
+						label: "1 year"
+					}, {
+						period: "YTD",
+						label: "YTD"
+					}, {
+						period: "MAX",
+						label: "MAX"
+					}]
+				},
+
+				dataSetSelector: {
+					position: "left"
+				}
+			});
+		}
+		</script>
+
+
+
+
+
+	</head>
+	
+
+ 
+
+	<body onload="myFunction({{alljsondata}},  {{key2}}, {{i}})" style="background-color:#FFFFFF">
+	
+<nav class="navbar navbar-inverse">
+  
+
+<div class="topnav">
+  <div class="active">
+    
+    <img src="static/img/stock1.png" width="80" height="60">
+  </div>
+  <a href="/">Home</a>
+ 
+  <a style="background: green" href="stockanalysis">Analysis</a>
+  <a href="sanima">Predicition</a>
+  <a href="admin">Admin</a>
+  <a href="about">About</a>
+</div>
+
+      
+
+
+    
+  </nav> 
+
+
+  <h1 style="text-align: center; color: red; margin: 5px;"> Stock Analysis </h1>
+		<div id="chartdiv" style="width:80%; margin-left: 130px; margin-top:20px; margin-right: 30px; height:455px;">
+			
+
+		</div>
+		<br>
+
+		<br>
+		<br>
+
+
+		<div>
+	<footer class="container-fluid text-center">
+<div class="footer-black"> <p  style="text-align: center;">  Copyrights © 2017 Stock Market Prediction | 
+BCT THIRD YEAR.</p></div>
+</footer>
+</div>
+
+    
+	</body>
+
+</html>

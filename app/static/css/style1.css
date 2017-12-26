@@ -1,0 +1,57 @@
+.container-fluid .row-content .col-sm-2 a{
+    
+ 
+
+    display: block;
+    width: 100%;
+    line-height: 2em;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    background: #E1E117;
+}
+#sanima:hover {
+   
+    
+    width: 110%;
+    
+     border-radius: 5px;
+    box-shadow: 5px 5px black;
+
+}
+#prabhu:hover{
+    width: 110%;
+    border-radius: 5px;
+    box-shadow: 5px 5px black;
+
+}
+#himalayan:hover{
+    width: 110%;
+     border-radius: 5px;
+    box-shadow: 5px 5px black;
+}
+#invesment:hover{
+    width: 110%;
+    border-radius: 5px;
+     box-shadow: 5px 5px black;
+}
+#rastriya:hover{
+    width: 110%;
+    border-radius: 5px;
+     box-shadow: 5px 5px black;
+}
+#adb:hover{
+    width: 110%;
+    border-radius: 5px;
+     box-shadow: 5px 5px black;
+}
+#everest:hover{
+    width: 110%;
+    border-radius: 5px;
+     box-shadow: 5px 5px black;
+}
+#sidartha:hover{
+    width: 110%;
+    border-radius: 5px;
+     box-shadow: 5px 5px black;
+}
