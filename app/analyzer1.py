@@ -114,33 +114,6 @@ def getPredictionData(stockSymbol):
     return predictionData
 
 ## ================================================================
-
-def analyzeSymbol(stockSymbol):
-    startTime = time.time()
-    
-    trainingData = getTrainingData(stockSymbol)
-    
-    network = NeuralNetwork(inputNodes = 3, hiddenNodes = 3, outputNodes = 1)
-
-    network.train(trainingData)
-
-    # get rolling data for most recent day
-    predictionData = getPredictionData(stockSymbol)
-
-    # get prediction
-    returnPrice = network.test(predictionData)
-
-    # de-normalize and return predicted stock price
-    predictedStockPrice = denormalizePrice(returnPrice, predictionData[1], predictionData[2])
-
-    # create return object, including the amount of time used to predict
-    returnData = {}
-    returnData['price'] = predictedStockPrice
-    returnData['time'] = time.time() - startTime
-
-    return returnData
-
-## ================================================================
-
-if __name__ == "__main__":
-    print analyzeSymbol("GOOG")
+function sum(){
+    sum = a+b;
+}
